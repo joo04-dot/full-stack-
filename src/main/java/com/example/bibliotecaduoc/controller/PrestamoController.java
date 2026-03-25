@@ -20,21 +20,21 @@ public class PrestamoController {
     }
 
     @PostMapping
-    public Prestamo agregarPrestamo(Prestamo prestamo) {
+    public Prestamo agregarPrestamo(@RequestBody Prestamo prestamo) {
         return prestamoService.savePrestamo(prestamo);
     }
 
-    @GetMapping
-    public Prestamo buscarPrestamo(int id){
+    @GetMapping("/{id}")
+    public Prestamo buscarPrestamo(@PathVariable int id) {
         return prestamoService.getPrestamoId(id);
     }
 
-    @DeleteMapping
-    public String eliminarPrestamo(int id) {
+    @DeleteMapping("/{id}")
+    public String eliminarPrestamo(@PathVariable int id) {
         return prestamoService.deletePrestamo(id);
     }
 
-    @GetMapping
+    @GetMapping("/total")
     public int totalPrestamos() {
         return prestamoService.totalPrestamos();
     }
